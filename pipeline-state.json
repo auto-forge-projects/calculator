@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "revision": 29,
+  "revision": 34,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
-  "current_phase": "1-2",
+  "current_phase": 3,
   "status": "running",
   "active_agents": [],
   "phases": {
@@ -22,6 +22,20 @@
       "gate_passed": true,
       "completed_at": "2026-07-24T00:38:08.000Z",
       "started_at": "2026-07-22T08:35:00.000Z"
+    },
+    "3": {
+      "mode": "AUTOPILOT",
+      "status": "done",
+      "started_at": "2026-07-24T00:40:07.000Z",
+      "artifacts": [
+        "docs/03-requirements.md"
+      ],
+      "decisions": [
+        "DL-03-001"
+      ],
+      "note": "Requirement Analizi (orchestrator inline, business-analyst rolü): 6 FR + 4 NFR. Kapı geçti (structural).",
+      "gate_passed": true,
+      "completed_at": "2026-07-24T00:40:48.000Z"
     },
     "1-2": {
       "mode": "AUTOPILOT",
@@ -57,6 +71,12 @@
       "event": "phase_started",
       "phase": "1-2",
       "detail": "Değer & Fizibilite (orchestrator inline, business-analyst rolü)"
+    },
+    {
+      "at": "2026-07-24T00:40:07.000Z",
+      "event": "phase_started",
+      "phase": 3,
+      "detail": "Requirement Analizi (orchestrator inline, business-analyst rolü)"
     }
   ],
   "budget": {
@@ -69,16 +89,28 @@
         "model": null,
         "gate_passed": true,
         "at": "2026-07-24T00:39:17.000Z"
+      },
+      {
+        "phase": "3",
+        "duration_s": 41,
+        "model": null,
+        "gate_passed": true,
+        "at": "2026-07-24T00:40:48.000Z"
       }
     ]
   },
-  "updated_at": "2026-07-24T00:39:17.120Z",
+  "updated_at": "2026-07-24T00:40:48.580Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
       "phase": 0,
       "at": "2026-07-24T00:38:24.712Z",
       "note": "Kapsam: dört işlem (+,-,×,÷), ondalık destekli, backend yok, tamamen istemci-taraflı. Hata durumları (sıfıra bölme, geçersiz girdi) kullanıcıya gösterilmeli, uygulama çökmemeli. Bilimsel fonksiyonlar, hesap/oturum, native mobil kapsam dışı."
+    },
+    {
+      "phase": "1-2",
+      "at": "2026-07-24T00:39:32.048Z",
+      "note": "GO kararı verildi; KPI odak: doğruluk %100, çökmeden hata gösterimi, hızlı yükleme. Teknik/ekonomik/zaman engelsiz — backend yok, statik hosting."
     }
   ]
 }
