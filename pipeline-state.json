@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "revision": 18,
+  "revision": 24,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
@@ -10,67 +10,39 @@
   "phases": {
     "0": {
       "mode": "AUTOPILOT",
-      "status": "awaiting_approval",
-      "note": "0b rafine brief onayı bekleniyor",
+      "status": "done",
+      "note": "Faz 0 (Fikir/Intake) üretildi (orchestrator inline, business-analyst rolü) — onaylı 0b brief girdi alındı",
       "artifacts": [
-        "docs/00-refined-brief.md"
+        "docs/00-refined-brief.md",
+        "docs/00-idea.md"
       ],
-      "decisions": []
+      "decisions": [
+        "DL-00-001"
+      ],
+      "gate_passed": true,
+      "completed_at": "2026-07-24T00:38:08.000Z",
+      "started_at": "2026-07-22T08:35:00.000Z"
     }
   },
   "feedback_loops": [],
   "pending_human_review": [],
   "history": [
     {
-      "event": "refine",
+      "at": "2026-07-24T00:38:08.000Z",
+      "event": "project_materialized",
+      "detail": "Taslak gerçek projeye dönüştürüldü: repo auto-forge-projects/calculator, workspace/calculator"
+    },
+    {
+      "at": "2026-07-24T00:38:08.000Z",
+      "event": "phase_completed",
       "phase": 0,
-      "detail": "0b rafine brief üretildi, onay bekleniyor"
-    },
-    {
-      "at": "2026-07-22T08:35:30.678Z",
-      "event": "mode_changed",
-      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
-    },
-    {
-      "at": "2026-07-22T08:42:35.609Z",
-      "event": "mode_changed",
-      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
-    },
-    {
-      "at": "2026-07-23T13:47:38.372Z",
-      "event": "mode_changed",
-      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
-    },
-    {
-      "at": "2026-07-23T22:29:05.091Z",
-      "event": "mode_changed",
-      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
-    },
-    {
-      "at": "2026-07-23T22:54:03.062Z",
-      "event": "mode_changed",
-      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
-    },
-    {
-      "at": "2026-07-24T00:18:05.718Z",
-      "event": "mode_changed",
-      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
-    },
-    {
-      "at": "2026-07-24T00:35:44.175Z",
-      "event": "mode_changed",
-      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
-    },
-    {
-      "at": "2026-07-24T00:35:44.358Z",
-      "event": "profile_changed",
-      "detail": "LITE"
+      "detail": "docs/00-idea.md üretildi (orchestrator inline, business-analyst rolü); kapı geçti (structural)"
     }
   ],
   "budget": {
     "model_calls": {},
     "notes": ""
   },
-  "updated_at": "2026-07-24T00:35:44.405Z",
+  "updated_at": "2026-07-24T00:38:08.578Z",
   "default_mode": "AUTOPILOT"
 }
