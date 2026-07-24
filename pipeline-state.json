@@ -1,11 +1,11 @@
 {
   "schema_version": 2,
-  "revision": 24,
+  "revision": 29,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
-  "current_phase": 0,
-  "status": "awaiting_approval",
+  "current_phase": "1-2",
+  "status": "running",
   "active_agents": [],
   "phases": {
     "0": {
@@ -22,6 +22,20 @@
       "gate_passed": true,
       "completed_at": "2026-07-24T00:38:08.000Z",
       "started_at": "2026-07-22T08:35:00.000Z"
+    },
+    "1-2": {
+      "mode": "AUTOPILOT",
+      "status": "done",
+      "started_at": "2026-07-24T00:38:45.000Z",
+      "artifacts": [
+        "docs/01-02-value-feasibility.md"
+      ],
+      "decisions": [
+        "DL-01-001"
+      ],
+      "note": "Değer & Fizibilite (orchestrator inline, business-analyst rolü): 3 KPI, GO kararı. Kapı geçti (structural).",
+      "gate_passed": true,
+      "completed_at": "2026-07-24T00:39:17.000Z"
     }
   },
   "feedback_loops": [],
@@ -37,12 +51,34 @@
       "event": "phase_completed",
       "phase": 0,
       "detail": "docs/00-idea.md üretildi (orchestrator inline, business-analyst rolü); kapı geçti (structural)"
+    },
+    {
+      "at": "2026-07-24T00:38:45.000Z",
+      "event": "phase_started",
+      "phase": "1-2",
+      "detail": "Değer & Fizibilite (orchestrator inline, business-analyst rolü)"
     }
   ],
   "budget": {
     "model_calls": {},
-    "notes": ""
+    "notes": "",
+    "telemetry": [
+      {
+        "phase": "1-2",
+        "duration_s": 32,
+        "model": null,
+        "gate_passed": true,
+        "at": "2026-07-24T00:39:17.000Z"
+      }
+    ]
   },
-  "updated_at": "2026-07-24T00:38:08.578Z",
-  "default_mode": "AUTOPILOT"
+  "updated_at": "2026-07-24T00:39:17.120Z",
+  "default_mode": "AUTOPILOT",
+  "checkpoints": [
+    {
+      "phase": 0,
+      "at": "2026-07-24T00:38:24.712Z",
+      "note": "Kapsam: dört işlem (+,-,×,÷), ondalık destekli, backend yok, tamamen istemci-taraflı. Hata durumları (sıfıra bölme, geçersiz girdi) kullanıcıya gösterilmeli, uygulama çökmemeli. Bilimsel fonksiyonlar, hesap/oturum, native mobil kapsam dışı."
+    }
+  ]
 }
