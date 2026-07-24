@@ -1,20 +1,76 @@
 {
   "schema_version": 2,
-  "revision": 0,
+  "revision": 18,
   "project": "calculator",
   "workspace": "workspace/calculator",
-  "repo_mode": "per-repo",
   "profile": "LITE",
-  "current_phase": null,
-  "status": "pending",
+  "current_phase": 0,
+  "status": "awaiting_approval",
   "active_agents": [],
-  "phases": {},
+  "phases": {
+    "0": {
+      "mode": "AUTOPILOT",
+      "status": "awaiting_approval",
+      "note": "0b rafine brief onayı bekleniyor",
+      "artifacts": [
+        "docs/00-refined-brief.md"
+      ],
+      "decisions": []
+    }
+  },
   "feedback_loops": [],
   "pending_human_review": [],
-  "history": [],
+  "history": [
+    {
+      "event": "refine",
+      "phase": 0,
+      "detail": "0b rafine brief üretildi, onay bekleniyor"
+    },
+    {
+      "at": "2026-07-22T08:35:30.678Z",
+      "event": "mode_changed",
+      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
+    },
+    {
+      "at": "2026-07-22T08:42:35.609Z",
+      "event": "mode_changed",
+      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
+    },
+    {
+      "at": "2026-07-23T13:47:38.372Z",
+      "event": "mode_changed",
+      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
+    },
+    {
+      "at": "2026-07-23T22:29:05.091Z",
+      "event": "mode_changed",
+      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
+    },
+    {
+      "at": "2026-07-23T22:54:03.062Z",
+      "event": "mode_changed",
+      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
+    },
+    {
+      "at": "2026-07-24T00:18:05.718Z",
+      "event": "mode_changed",
+      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
+    },
+    {
+      "at": "2026-07-24T00:35:44.175Z",
+      "event": "mode_changed",
+      "detail": "AUTOPILOT (aktif+sonrası; fazlar: 0)"
+    },
+    {
+      "at": "2026-07-24T00:35:44.358Z",
+      "event": "profile_changed",
+      "detail": "LITE"
+    }
+  ],
   "budget": {
     "model_calls": {},
     "notes": ""
   },
-  "updated_at": null
+  "updated_at": "2026-07-24T00:35:44.405Z",
+  "default_mode": "AUTOPILOT"
 }
