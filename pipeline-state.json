@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "revision": 39,
+  "revision": 44,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
-  "current_phase": 4,
+  "current_phase": 5,
   "status": "running",
   "active_agents": [],
   "phases": {
@@ -50,6 +50,20 @@
       "note": "Çözüm Analizi (architect devri, opus): vanilla HTML/CSS/JS seçildi (3 alternatif, trade-off matrisi). Kapı geçti (structural).",
       "gate_passed": true,
       "completed_at": "2026-07-24T00:42:25.000Z"
+    },
+    "5": {
+      "mode": "AUTOPILOT",
+      "status": "done",
+      "started_at": "2026-07-24T00:42:33.000Z",
+      "artifacts": [
+        "docs/05-architecture.md"
+      ],
+      "decisions": [
+        "DL-05-001"
+      ],
+      "note": "Mimari Tasarım (architect devri, opus): statik sıfır-bağımlılık mimari, Mermaid diyagram, NFR eşleme. Kapı geçti (structural).",
+      "gate_passed": true,
+      "completed_at": "2026-07-24T00:44:18.000Z"
     },
     "1-2": {
       "mode": "AUTOPILOT",
@@ -97,6 +111,12 @@
       "event": "phase_started",
       "phase": 4,
       "detail": "Çözüm Analizi (architect subagent devri, opus)"
+    },
+    {
+      "at": "2026-07-24T00:42:33.000Z",
+      "event": "phase_started",
+      "phase": 5,
+      "detail": "Mimari Tasarım (architect subagent devri, opus)"
     }
   ],
   "budget": {
@@ -123,10 +143,17 @@
         "model": null,
         "gate_passed": true,
         "at": "2026-07-24T00:42:25.000Z"
+      },
+      {
+        "phase": "5",
+        "duration_s": 105,
+        "model": null,
+        "gate_passed": true,
+        "at": "2026-07-24T00:44:18.000Z"
       }
     ]
   },
-  "updated_at": "2026-07-24T00:42:25.215Z",
+  "updated_at": "2026-07-24T00:44:18.812Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
@@ -143,6 +170,11 @@
       "phase": 3,
       "at": "2026-07-24T00:40:50.503Z",
       "note": "FR-1..FR-6: 4 işlem + geçersiz girdi/sıfıra bölme hata yönetimi + Clear. NFR-2 kritik: eval()/Function() ile kullanıcı girdisi çalıştırılmayacak — elle ayrıştırma zorunlu (mimari/Faz9 buna uymalı)."
+    },
+    {
+      "phase": 4,
+      "at": "2026-07-24T00:42:27.210Z",
+      "note": "Çözüm: vanilla HTML/CSS/JS, framework/build-tool yok (sıfır bağımlılık). NFR-2 gereği eval/Function mimaride hiç görünmeyecek — elle tokenize/parse + sabit operatör tablosu."
     }
   ]
 }
