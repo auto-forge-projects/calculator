@@ -1,12 +1,21 @@
 {
   "schema_version": 2,
-  "revision": 106,
+  "revision": 110,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
-  "current_phase": "9",
+  "current_phase": "10",
   "status": "running",
-  "active_agents": [],
+  "active_agents": [
+    {
+      "agent": "code-reviewer",
+      "model": "opus",
+      "phase": "10",
+      "task": "REQ-001 diff blind re-review",
+      "started_at": "2026-07-25T19:06:00.000Z",
+      "last_update": "2026-07-25T19:03:00.968Z"
+    }
+  ],
   "phases": {
     "0": {
       "mode": "AUTOPILOT",
@@ -151,8 +160,8 @@
     },
     "10": {
       "mode": "AUTOPILOT",
-      "status": "done",
-      "started_at": "2026-07-25T01:10:00.000Z",
+      "status": "running",
+      "started_at": "2026-07-25T19:06:00.000Z",
       "tasks": [
         {
           "title": "src/+tests/ elle okuma (app.js, index.html, style.css, app.test.js)",
@@ -183,14 +192,16 @@
       "status": "done",
       "started_at": "2026-07-25T07:15:00.000Z",
       "gate_passed": true,
-      "completed_at": "2026-07-25T07:20:00.000Z",
+      "completed_at": "2026-07-25T19:15:00.000Z",
       "artifacts": [
         "docs/11-test/test-plan.md",
         "docs/11-test/results.md"
       ],
       "decisions": [
-        "DL-11-001"
-      ]
+        "DL-11-001",
+        "DL-11-002"
+      ],
+      "note": "REQ-001 delta revalidasyonu: T7 eklendi (39/39 yeşil). Sıfırdan üretim yok."
     },
     "12": {
       "mode": "AUTOPILOT",
@@ -445,7 +456,7 @@
       }
     ]
   },
-  "updated_at": "2026-07-25T18:57:23.349Z",
+  "updated_at": "2026-07-25T19:03:07.149Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
