@@ -1,22 +1,12 @@
 {
   "schema_version": 2,
-  "revision": 57,
+  "revision": 61,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
   "current_phase": 9,
   "status": "running",
-  "active_agents": [
-    {
-      "agent": "developer",
-      "model": "sonnet",
-      "phase": 9,
-      "task": "Development (TDD): parser+calculate+DOM+testler",
-      "started_at": "2026-07-25T00:45:00.000Z",
-      "last_update": "2026-07-25T01:03:49.030Z",
-      "via": "inline"
-    }
-  ],
+  "active_agents": [],
   "phases": {
     "0": {
       "mode": "AUTOPILOT",
@@ -119,7 +109,7 @@
     },
     "9": {
       "mode": "AUTOPILOT",
-      "status": "running",
+      "status": "done",
       "started_at": "2026-07-25T00:45:00.000Z",
       "tasks": [
         {
@@ -142,7 +132,19 @@
           "title": "TASK-005 app.js DOM adaptörü",
           "status": "done"
         }
-      ]
+      ],
+      "gate_passed": true,
+      "completed_at": "2026-07-25T01:05:00.000Z",
+      "decisions": [
+        "DL-09-001"
+      ],
+      "artifacts": [
+        "src/app.js",
+        "src/index.html",
+        "src/style.css",
+        "tests/app.test.js"
+      ],
+      "note": "Development (orchestrator inline, developer rolü, TDD): saf fonksiyon+reducer durum makinesi+ince DOM adaptörü. npm test 27/27 yeşil. Kapı geçti (mechanical, all). [resume ile kapatıldı — impl commit kesintiden sonra tamamlandı]"
     },
     "1-2": {
       "mode": "AUTOPILOT",
@@ -207,6 +209,11 @@
       "at": "2026-07-25T00:40:50.633Z",
       "event": "mode_changed",
       "detail": "AUTOPILOT (aktif+sonrası; fazlar: yalnız default_mode)"
+    },
+    {
+      "event": "recovered",
+      "phase": 9,
+      "detail": "STALE/kesik ORPHANED_RUN: test(red) commit atılmış ama impl(green) commit eksikti. Diskte iş fiilen tamamdı (27 test yeşil) — feat(...) commit atıldı, tasks done işaretlendi, kapı (all) yeniden doğrulandı ve geçti, faz done kapatıldı."
     }
   ],
   "budget": {
@@ -261,10 +268,18 @@
         "model": null,
         "gate_passed": true,
         "at": "2026-07-24T18:46:06.000Z"
+      },
+      {
+        "phase": "9",
+        "duration_s": 1200,
+        "model": null,
+        "model_recommended": "sonnet",
+        "gate_passed": true,
+        "at": "2026-07-25T01:05:00.000Z"
       }
     ]
   },
-  "updated_at": "2026-07-25T01:03:49.030Z",
+  "updated_at": "2026-07-25T01:04:05.456Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
@@ -291,6 +306,11 @@
       "phase": 5,
       "at": "2026-07-24T00:44:20.846Z",
       "note": "Mimari: index.html+style.css+app.js+app.test.js, saf fonksiyon parser/calculator, hata {error} birliği (istisna değil). eval/Function yasağı mimariye çapalandı. Node >=18 (node --test) gerekiyor."
+    },
+    {
+      "phase": 9,
+      "at": "2026-07-25T01:04:05.456Z",
+      "note": "Hesap makinesi: saf parseNumber/calculate/formatResult + DOM-bağımsız reducer durum makinesi (reduceDigit/Operator/Equals/Clear) + ince DOM adaptörü. CSP eklendi, eval/Function yok (SEC-1/2). 27 test yeşil."
     }
   ],
   "product": {
