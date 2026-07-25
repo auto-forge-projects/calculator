@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "revision": 97,
+  "revision": 99,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
@@ -504,7 +504,7 @@
       }
     ]
   },
-  "updated_at": "2026-07-25T09:11:00.660Z",
+  "updated_at": "2026-07-25T12:11:24.146Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
@@ -559,5 +559,12 @@
         "path": "docs/05-architecture.md"
       }
     ]
+  },
+  "deploy": {
+    "status": "deploying",
+    "url": "https://calculator.apps.sametemek.com",
+    "server": "main",
+    "triggered_at": "2026-07-25T09:15:00.000Z",
+    "run": "deploy-image.yml"
   }
 }
