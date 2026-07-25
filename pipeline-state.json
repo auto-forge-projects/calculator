@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "revision": 61,
+  "revision": 81,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
-  "current_phase": 9,
+  "current_phase": 11,
   "status": "running",
   "active_agents": [],
   "phases": {
@@ -110,33 +110,30 @@
     "9": {
       "mode": "AUTOPILOT",
       "status": "done",
-      "started_at": "2026-07-25T00:45:00.000Z",
+      "started_at": "2026-07-25T01:35:00.000Z",
       "tasks": [
         {
-          "title": "TASK-001 parser (parseNumber)",
+          "title": "TASK-F12: formatResult+calculate için red testleri (F1/F2/F5)",
           "status": "done"
         },
         {
-          "title": "TASK-002 calculate (4 işlem)",
+          "title": "TASK-F12: app.js düzeltmesi (green)",
           "status": "done"
         },
         {
-          "title": "TASK-003 birim testleri (node --test)",
+          "title": "TASK-F12: npm test yeşil doğrulama",
           "status": "done"
         },
         {
-          "title": "TASK-004 index.html+style.css",
-          "status": "done"
-        },
-        {
-          "title": "TASK-005 app.js DOM adaptörü",
+          "title": "DL-09-002 yaz + commit",
           "status": "done"
         }
       ],
       "gate_passed": true,
-      "completed_at": "2026-07-25T01:05:00.000Z",
+      "completed_at": "2026-07-25T02:00:00.000Z",
       "decisions": [
-        "DL-09-001"
+        "DL-09-001",
+        "DL-09-002"
       ],
       "artifacts": [
         "src/app.js",
@@ -145,6 +142,49 @@
         "tests/app.test.js"
       ],
       "note": "Development (orchestrator inline, developer rolü, TDD): saf fonksiyon+reducer durum makinesi+ince DOM adaptörü. npm test 27/27 yeşil. Kapı geçti (mechanical, all). [resume ile kapatıldı — impl commit kesintiden sonra tamamlandı]"
+    },
+    "10": {
+      "mode": "AUTOPILOT",
+      "status": "done",
+      "started_at": "2026-07-25T01:10:00.000Z",
+      "tasks": [
+        {
+          "title": "src/+tests/ elle okuma (app.js, index.html, style.css, app.test.js)",
+          "status": "done"
+        },
+        {
+          "title": "Bağımsız test koşumu (npm test + coverage)",
+          "status": "done"
+        },
+        {
+          "title": "FR ↔ kod izlenebilirlik + SEC-1..7 kontrolü",
+          "status": "done"
+        },
+        {
+          "title": "PR-1.md bulgular raporunu yaz",
+          "status": "done"
+        },
+        {
+          "title": "DL-10-001 (ertelenen düzeltmeler) + commit/push",
+          "status": "done"
+        }
+      ],
+      "gate_passed": true,
+      "completed_at": "2026-07-25T00:00:00Z"
+    },
+    "11": {
+      "mode": "AUTOPILOT",
+      "status": "done",
+      "started_at": "2026-07-25T07:15:00.000Z",
+      "gate_passed": true,
+      "completed_at": "2026-07-25T07:20:00.000Z",
+      "artifacts": [
+        "docs/11-test/test-plan.md",
+        "docs/11-test/results.md"
+      ],
+      "decisions": [
+        "DL-11-001"
+      ]
     },
     "1-2": {
       "mode": "AUTOPILOT",
@@ -161,7 +201,20 @@
       "completed_at": "2026-07-24T00:39:17.000Z"
     }
   },
-  "feedback_loops": [],
+  "feedback_loops": [
+    {
+      "from": 10,
+      "to": 9,
+      "reason": "DL-10-001 reddedildi (\"düzelt bunları!\") — F1 (formatResult taşma → Infinity), F2 (reducer Number.isFinite doğrulaması yok), F5 (küçük değer sıfıra yuvarlanıyor) düzeltilecek",
+      "at": "2026-07-25T01:33:00.000Z"
+    },
+    {
+      "from": 10,
+      "to": 5,
+      "reason": "DL-10-001 reddedildi — F3 docs/05 mimari dokümanı reducer katmanı/veri modeliyle güncellenecek",
+      "at": "2026-07-25T01:33:00.000Z"
+    }
+  ],
   "pending_human_review": [],
   "history": [
     {
@@ -214,6 +267,26 @@
       "event": "recovered",
       "phase": 9,
       "detail": "STALE/kesik ORPHANED_RUN: test(red) commit atılmış ama impl(green) commit eksikti. Diskte iş fiilen tamamdı (27 test yeşil) — feat(...) commit atıldı, tasks done işaretlendi, kapı (all) yeniden doğrulandı ve geçti, faz done kapatıldı."
+    },
+    {
+      "event": "phase_started",
+      "phase": 10,
+      "detail": "Code Review (code-reviewer devri, opus, blind, async — LITE FAST profil): Author(orchestrator/developer)≠Reviewer korunur."
+    },
+    {
+      "at": "2026-07-25T01:28:16.063Z",
+      "event": "decision_reject",
+      "detail": "DL-10-001 — reddetme gerekçesi: düzelt bunları!"
+    },
+    {
+      "event": "feedback_loop_resolved",
+      "phase": 5,
+      "detail": "DL-10-001 F3 (docs/05 drift) → DL-05-002 ile giderildi (reducer durum makinesi doküman yaması)"
+    },
+    {
+      "at": "2026-07-25T08:52:58.276Z",
+      "event": "zombie_agents_pruned",
+      "detail": "1 bayat ajan kaydı budandı (fazı koşmuyor — AF-090)"
     }
   ],
   "budget": {
@@ -276,10 +349,26 @@
         "model_recommended": "sonnet",
         "gate_passed": true,
         "at": "2026-07-25T01:05:00.000Z"
+      },
+      {
+        "phase": "9",
+        "duration_s": 1500,
+        "model": null,
+        "model_recommended": "sonnet",
+        "gate_passed": true,
+        "at": "2026-07-25T02:00:00.000Z"
+      },
+      {
+        "phase": "11",
+        "duration_s": 300,
+        "model": null,
+        "model_recommended": "sonnet",
+        "gate_passed": true,
+        "at": "2026-07-25T07:20:00.000Z"
       }
     ]
   },
-  "updated_at": "2026-07-25T01:04:05.456Z",
+  "updated_at": "2026-07-25T08:52:58.276Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
