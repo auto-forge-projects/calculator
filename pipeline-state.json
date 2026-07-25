@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "revision": 99,
+  "revision": 101,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
@@ -504,7 +504,7 @@
       }
     ]
   },
-  "updated_at": "2026-07-25T12:11:24.146Z",
+  "updated_at": "2026-07-25T12:13:05.706Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
@@ -561,10 +561,18 @@
     ]
   },
   "deploy": {
-    "status": "deploying",
+    "status": "deployed",
     "url": "https://calculator.apps.sametemek.com",
     "server": "main",
-    "triggered_at": "2026-07-25T09:15:00.000Z",
-    "run": "deploy-image.yml"
+    "triggered_at": "2026-07-25T12:11:14.000Z",
+    "run": "deploy-image.yml",
+    "sha": "217519a24513d46c299ffecda661636839d53fcd",
+    "history": [
+      {
+        "sha": "217519a24513d46c299ffecda661636839d53fcd",
+        "at": "2026-07-25T12:11:19.000Z",
+        "url": "https://calculator.apps.sametemek.com"
+      }
+    ]
   }
 }
