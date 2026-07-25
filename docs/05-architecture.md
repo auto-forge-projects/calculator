@@ -10,24 +10,30 @@ Hesap mantığı **saf fonksiyonlar** olarak izole → hem güvenlik (eval yasa�
 ## Dosya yapısı
 | Dosya | Sorumluluk |
 |-------|------------|
-| `index.html` | İskelet: iki sayı girişi, operatör butonları (+ − × ÷), C, sonuç alanı |
+| `index.html` | İskelet: tek ekranlı tuş takımı (11 rakam + 4 operatör + `=`/`C`), sonuç alanı |
 | `style.css` | Sunum + responsive layout (mobil/masaüstü) |
-| `app.js` | Mantık: `parseNumber()`, `calculate(a,op,b)`, DOM olay bağlama + render |
-| `app.test.js` | Saf fonksiyon birim testleri (parser + 4 işlem + hata yolları) |
+| `app.js` | Mantık: `parseNumber()`/`calculate()`/`formatResult()` (saf fn) + reducer durum makinesi (`reduceDigit`/`reduceOperator`/`reduceEquals`/`reduceClear`) + ince DOM adaptörü (olay bağlama, `render()`, klavye haritası) |
+| `app.test.js` | Saf fonksiyon + reducer birim testleri (parser + 4 işlem + hata yolları + durum geçişleri) |
 
-Not: `app.js` tek dosyada iki katman tutar (parser/calculator saf fn'ler + ince DOM adaptörü);
-LITE kapsamda ayrı modül dosyaları gereksiz. Saf fn'ler `export` edilerek testten tüketilir.
+Not: `app.js` tek dosyada üç katman tutar (parser/calculator saf fn'ler + reducer durum makinesi + ince DOM adaptörü);
+LITE kapsamda ayrı modül dosyaları gereksiz. Saf fn'ler ve reducer'lar `export` edilerek testten tüketilir.
+**(Faz 10 F3 düzeltmesi — DL-10-001):** UI, "iki sayı girişi" yerine tek-ekranlı tuş takımı + reducer
+durum makinesi olarak implemente edildi; bu bölüm ve aşağıdaki diyagram/veri modeli buna göre güncellendi.
 
 ## Bileşen görünümü
 ```mermaid
 graph TD
-  HTML[index.html<br/>giriş + butonlar + sonuç] -->|olay| ADP[DOM adaptörü<br/>app.js]
-  ADP -->|ham metin| PAR[parseNumber<br/>saf fn]
+  HTML[index.html<br/>tuş takımı + sonuç ekranı] -->|tuş olayı| ADP[DOM adaptörü<br/>app.js]
+  ADP -->|digit/op/equals/clear| RED[Reducer durum makinesi<br/>reduceDigit/reduceOperator/reduceEquals/reduceClear]
+  RED -->|ham metin| PAR[parseNumber<br/>saf fn]
   PAR -->|sayı / hata| CALC[calculate a,op,b<br/>sabit operatör tablosu]
-  CALC -->|sonuç / hata mesajı| ADP
-  ADP -->|textContent| HTML
+  CALC -->|sonuç / hata mesajı| RED
+  RED -->|display state| FMT[formatResult<br/>saf fn]
+  FMT -->|textContent| ADP
+  ADP -->|render| HTML
   TEST[app.test.js] -.test.-> PAR
   TEST -.test.-> CALC
+  TEST -.test.-> RED
   CSS[style.css] -.stil.-> HTML
 ```
 
@@ -58,7 +64,8 @@ sequenceDiagram
 
 ## Veri modeli
 Kalıcı depolama yok (durumsuz). Geçici çalışma değerleri:
-- Girdi: `{ aRaw:string, bRaw:string, op:'+'|'-'|'×'|'÷' }`
+- Reducer durumu (tek ekran tuş takımı — Faz 10 F3): `{ display:string, previous:number|null, operator:string|null, awaitingNext:boolean, hasEntered:boolean, isError:boolean }`; `createInitialState()` başlangıç değerini üretir.
+- Saf hesap katmanı girdisi: `calculate(a:number, op:'+'|'-'|'×'|'÷', b:number)`.
 - Sonuç: ayrık birlik → `{ value:number }` VEYA `{ error:string }` (istisna fırlatmadan hata taşınır → NFR-3).
 - Operatör tablosu: sabit `{ '+':fn, '-':fn, '×':fn, '÷':fn }` — allowlist; tablo dışı op reddedilir.
 
