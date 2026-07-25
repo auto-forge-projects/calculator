@@ -12,10 +12,11 @@
 | T4 | DOM smoke: Escape ile temizleme | Major (F4) | ✅ |
 | T5 | NFR-3: 10 ardışık işlem (sol-sağ, öncelik yok) çökmeden doğru sonuç | Kritik | ✅ |
 | T6 | FR-1..FR-6 + hata yolları (Faz 9'dan devralınan 31 test) | Kritik | ✅ (mevcut) |
+| T7 | REQ-001 regresyonu: `#clear` `key-span3`, 1. satır grid hizası (`÷` diğer operatörlerle aynı sütunda) | Major (REQ-001 delta, ↺ cycle 2) | ✅ |
 
 ## Yöntem
 Minimal DOM stub (`tests/contract.test.js`) — gerçek jsdom bağımlılığı eklenmedi (sıfır-bağımlılık
 mimari ilkesi, DL-05-001 korunur). Statik sözleşme kontrolü `src/index.html` metin taraması ile.
 
 ## Kalite kapısı raporu
-- "Kritik senaryolar %100" → ✅ T1-T6 hepsi geçti (38/38 test yeşil).
+- "Kritik senaryolar %100" → ✅ T1-T7 hepsi geçti (39/39 test yeşil).
