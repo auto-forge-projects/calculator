@@ -1,11 +1,11 @@
 {
   "schema_version": 2,
-  "revision": 101,
+  "revision": 102,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
-  "current_phase": 16,
-  "status": "completed",
+  "current_phase": "9",
+  "status": "running",
   "active_agents": [],
   "phases": {
     "0": {
@@ -110,8 +110,8 @@
     },
     "9": {
       "mode": "AUTOPILOT",
-      "status": "done",
-      "started_at": "2026-07-25T01:35:00.000Z",
+      "status": "running",
+      "started_at": "2026-07-25T18:49:52.280Z",
       "tasks": [
         {
           "title": "TASK-F12: formatResult+calculate için red testleri (F1/F2/F5)",
@@ -299,90 +299,18 @@
   },
   "feedback_loops": [
     {
-      "from": 10,
-      "to": 9,
-      "reason": "DL-10-001 reddedildi (\"düzelt bunları!\") — F1 (formatResult taşma → Infinity), F2 (reducer Number.isFinite doğrulaması yok), F5 (küçük değer sıfıra yuvarlanıyor) düzeltilecek",
-      "at": "2026-07-25T01:33:00.000Z"
-    },
-    {
-      "from": 10,
-      "to": 5,
-      "reason": "DL-10-001 reddedildi — F3 docs/05 mimari dokümanı reducer katmanı/veri modeliyle güncellenecek",
-      "at": "2026-07-25T01:33:00.000Z"
+      "from": "REQ-001",
+      "to": "9",
+      "reason": "Operatör butonları (÷) grid hizası bozuk, rakamların sağına hizalanacak şekilde düzeltilecek",
+      "at": "2026-07-25T18:49:46.000Z"
     }
   ],
   "pending_human_review": [],
   "history": [
     {
-      "at": "2026-07-24T00:38:08.000Z",
-      "event": "project_materialized",
-      "detail": "Taslak gerçek projeye dönüştürüldü: repo auto-forge-projects/calculator, workspace/calculator"
-    },
-    {
-      "at": "2026-07-24T00:38:08.000Z",
-      "event": "phase_completed",
-      "phase": 0,
-      "detail": "docs/00-idea.md üretildi (orchestrator inline, business-analyst rolü); kapı geçti (structural)"
-    },
-    {
-      "at": "2026-07-24T00:38:45.000Z",
-      "event": "phase_started",
-      "phase": "1-2",
-      "detail": "Değer & Fizibilite (orchestrator inline, business-analyst rolü)"
-    },
-    {
-      "at": "2026-07-24T00:40:07.000Z",
-      "event": "phase_started",
-      "phase": 3,
-      "detail": "Requirement Analizi (orchestrator inline, business-analyst rolü)"
-    },
-    {
-      "at": "2026-07-24T00:41:00.000Z",
-      "event": "phase_started",
-      "phase": 4,
-      "detail": "Çözüm Analizi (architect subagent devri, opus)"
-    },
-    {
-      "at": "2026-07-24T00:42:33.000Z",
-      "event": "phase_started",
-      "phase": 5,
-      "detail": "Mimari Tasarım (architect subagent devri, opus)"
-    },
-    {
-      "at": "2026-07-24T00:44:41.000Z",
-      "event": "phase_started",
-      "phase": "6,7,8",
-      "detail": "Faz 5 bitti, bağımlılık grafına göre 6/7/8 paralel başlatıldı (6/8 inline, 7 security-reviewer devri)"
-    },
-    {
-      "at": "2026-07-25T00:40:50.633Z",
-      "event": "mode_changed",
-      "detail": "AUTOPILOT (aktif+sonrası; fazlar: yalnız default_mode)"
-    },
-    {
-      "event": "recovered",
-      "phase": 9,
-      "detail": "STALE/kesik ORPHANED_RUN: test(red) commit atılmış ama impl(green) commit eksikti. Diskte iş fiilen tamamdı (27 test yeşil) — feat(...) commit atıldı, tasks done işaretlendi, kapı (all) yeniden doğrulandı ve geçti, faz done kapatıldı."
-    },
-    {
-      "event": "phase_started",
-      "phase": 10,
-      "detail": "Code Review (code-reviewer devri, opus, blind, async — LITE FAST profil): Author(orchestrator/developer)≠Reviewer korunur."
-    },
-    {
-      "at": "2026-07-25T01:28:16.063Z",
-      "event": "decision_reject",
-      "detail": "DL-10-001 — reddetme gerekçesi: düzelt bunları!"
-    },
-    {
-      "event": "feedback_loop_resolved",
-      "phase": 5,
-      "detail": "DL-10-001 F3 (docs/05 drift) → DL-05-002 ile giderildi (reducer durum makinesi doküman yaması)"
-    },
-    {
-      "at": "2026-07-25T08:52:58.276Z",
-      "event": "zombie_agents_pruned",
-      "detail": "1 bayat ajan kaydı budandı (fazı koşmuyor — AF-090)"
+      "at": "2026-07-25T18:49:46.000Z",
+      "event": "cycle_opened",
+      "detail": "REQ-001: operatör butonları hizalama düzeltmesi — Faz 9 yeniden açıldı"
     }
   ],
   "budget": {
@@ -504,7 +432,7 @@
       }
     ]
   },
-  "updated_at": "2026-07-25T12:13:05.706Z",
+  "updated_at": "2026-07-25T18:49:52.280Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
@@ -574,5 +502,19 @@
         "url": "https://calculator.apps.sametemek.com"
       }
     ]
-  }
+  },
+  "cycle": 2,
+  "requests": [
+    {
+      "id": "REQ-001",
+      "text": "+ - * ve / butonları rakamların solunda kalmış. bu butonları en sağa alalım.",
+      "at": "2026-07-25T18:49:46.000Z",
+      "status": "in_delta",
+      "phases": [
+        "9"
+      ],
+      "cycle": 2,
+      "notify_email": "semakucukpehlivan@gmail.com"
+    }
+  ]
 }
