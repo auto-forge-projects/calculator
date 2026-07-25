@@ -1,7 +1,10 @@
 'use strict';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseNumber, calculate, formatResult } from '../src/app.js';
+import {
+  parseNumber, calculate, formatResult,
+  createInitialState, reduceDigit, reduceOperator, reduceEquals, reduceClear,
+} from '../src/app.js';
 
 // --- parseNumber (FR-5: geçersiz girdi yönetimi) ---
 
@@ -81,4 +84,74 @@ test('formatResult: ondalık sonuç gereksiz kuyruk sıfırları olmadan göster
 test('formatResult: kayan nokta gürültüsü kırpılır (0.1+0.2)', () => {
   const r = calculate(0.1, '+', 0.2);
   assert.equal(formatResult(r.value), '0.3');
+});
+
+// --- Durum makinesi (docs/06-uiux.md akışlarının birebir karşılığı) ---
+
+function press(state, keys) {
+  return keys.reduce((s, k) => {
+    if (k === '=') return reduceEquals(s);
+    if (k === 'C') return reduceClear();
+    if (['+', '-', '×', '÷'].includes(k)) return reduceOperator(s, k);
+    return reduceDigit(s, k);
+  }, state);
+}
+
+test('UI akışı: normal — [7][+][3][=] → 10', () => {
+  const s = press(createInitialState(), ['7', '+', '3', '=']);
+  assert.equal(s.display, '10');
+  assert.equal(s.isError, false);
+});
+
+test('UI akışı: sıfıra bölme — [5][÷][0][=] → hata, C ile temizlenir', () => {
+  const afterDiv = press(createInitialState(), ['5', '÷', '0', '=']);
+  assert.equal(afterDiv.display, 'Hata: sıfıra bölünemez');
+  assert.equal(afterDiv.isError, true);
+  const cleared = reduceClear(afterDiv);
+  assert.equal(cleared.display, '0');
+  assert.equal(cleared.isError, false);
+});
+
+test('UI akışı: geçersiz girdi — [C][=] → hata (boş girişte = basılırsa)', () => {
+  const s = press(createInitialState(), ['C', '=']);
+  assert.equal(s.display, 'Hata: geçersiz girdi');
+  assert.equal(s.isError, true);
+});
+
+test('UI akışı: zincirleme işlem — [2][+][3][+][4][=] → 9', () => {
+  const s = press(createInitialState(), ['2', '+', '3', '+', '4', '=']);
+  assert.equal(s.display, '9');
+});
+
+test('durum makinesi: başlangıç ekranı 0 gösterir', () => {
+  assert.equal(createInitialState().display, '0');
+});
+
+test('durum makinesi: baştaki sıfır yeni rakamla değişir (0 → 5, "05" olmaz)', () => {
+  const s = reduceDigit(createInitialState(), '5');
+  assert.equal(s.display, '5');
+});
+
+test('durum makinesi: ondalık nokta iki kez eklenmez', () => {
+  const s = press(createInitialState(), ['1', '.', '2', '.', '5']);
+  assert.equal(s.display, '1.25');
+});
+
+test('durum makinesi: hatadan sonra rakam basmak sıfırdan başlar', () => {
+  const errored = press(createInitialState(), ['5', '÷', '0', '=']);
+  const s = reduceDigit(errored, '9');
+  assert.equal(s.display, '9');
+  assert.equal(s.isError, false);
+});
+
+test('durum makinesi: operatör değiştirmek (henüz rakam girilmeden) yeniden hesaplamaz', () => {
+  const s = press(createInitialState(), ['7', '+', '-']);
+  assert.equal(s.operator, '-');
+  assert.equal(s.previous, 7);
+});
+
+test('durum makinesi: tek sayı girip = basmak (operatörsüz) hiçbir şeyi bozmaz', () => {
+  const s = press(createInitialState(), ['4', '2', '=']);
+  assert.equal(s.display, '42');
+  assert.equal(s.isError, false);
 });

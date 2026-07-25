@@ -1,12 +1,22 @@
 {
   "schema_version": 2,
-  "revision": 51,
+  "revision": 57,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
   "current_phase": 9,
   "status": "running",
-  "active_agents": [],
+  "active_agents": [
+    {
+      "agent": "developer",
+      "model": "sonnet",
+      "phase": 9,
+      "task": "Development (TDD): parser+calculate+DOM+testler",
+      "started_at": "2026-07-25T00:45:00.000Z",
+      "last_update": "2026-07-25T01:03:49.030Z",
+      "via": "inline"
+    }
+  ],
   "phases": {
     "0": {
       "mode": "AUTOPILOT",
@@ -107,6 +117,33 @@
       "completed_at": "2026-07-24T18:46:06.000Z",
       "note": "Planlama (orchestrator inline, business-analyst rolü): 5 task, bağımlılık grafı. Kapı geçti (structural). [resume ile kapatıldı]"
     },
+    "9": {
+      "mode": "AUTOPILOT",
+      "status": "running",
+      "started_at": "2026-07-25T00:45:00.000Z",
+      "tasks": [
+        {
+          "title": "TASK-001 parser (parseNumber)",
+          "status": "done"
+        },
+        {
+          "title": "TASK-002 calculate (4 işlem)",
+          "status": "done"
+        },
+        {
+          "title": "TASK-003 birim testleri (node --test)",
+          "status": "done"
+        },
+        {
+          "title": "TASK-004 index.html+style.css",
+          "status": "done"
+        },
+        {
+          "title": "TASK-005 app.js DOM adaptörü",
+          "status": "done"
+        }
+      ]
+    },
     "1-2": {
       "mode": "AUTOPILOT",
       "status": "done",
@@ -165,6 +202,11 @@
       "event": "phase_started",
       "phase": "6,7,8",
       "detail": "Faz 5 bitti, bağımlılık grafına göre 6/7/8 paralel başlatıldı (6/8 inline, 7 security-reviewer devri)"
+    },
+    {
+      "at": "2026-07-25T00:40:50.633Z",
+      "event": "mode_changed",
+      "detail": "AUTOPILOT (aktif+sonrası; fazlar: yalnız default_mode)"
     }
   ],
   "budget": {
@@ -222,7 +264,7 @@
       }
     ]
   },
-  "updated_at": "2026-07-25T00:22:08.883Z",
+  "updated_at": "2026-07-25T01:03:49.030Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {

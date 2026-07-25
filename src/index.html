@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'none'">
+  <title>Hesap Makinesi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="calculator">
+    <div id="screen" class="screen" role="status" aria-live="polite">0</div>
+    <div class="keys">
+      <button type="button" id="clear" class="key key-clear key-span2">C</button>
+      <button type="button" class="key key-op" data-op="÷">÷</button>
+
+      <button type="button" class="key" data-digit="7">7</button>
+      <button type="button" class="key" data-digit="8">8</button>
+      <button type="button" class="key" data-digit="9">9</button>
+      <button type="button" class="key key-op" data-op="×">×</button>
+
+      <button type="button" class="key" data-digit="4">4</button>
+      <button type="button" class="key" data-digit="5">5</button>
+      <button type="button" class="key" data-digit="6">6</button>
+      <button type="button" class="key key-op" data-op="-">−</button>
+
+      <button type="button" class="key" data-digit="1">1</button>
+      <button type="button" class="key" data-digit="2">2</button>
+      <button type="button" class="key" data-digit="3">3</button>
+      <button type="button" class="key key-op" data-op="+">+</button>
+
+      <button type="button" class="key" data-digit="0">0</button>
+      <button type="button" class="key" data-digit=".">.</button>
+      <button type="button" id="equals" class="key key-equals key-span2">=</button>
+    </div>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
