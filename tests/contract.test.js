@@ -36,6 +36,16 @@ test('sözleşme: index.html zorunlu id\'leri içerir (screen/equals/clear)', ()
   }
 });
 
+// REQ-001: operatör butonları görsel olarak rakamların SAĞINDA (grid'in son sütununda)
+// hizalı olmalı. 1. satırda C tuşu 3 sütun kaplamalı ki ÷ diğer operatörlerle (×, −, +)
+// aynı (4.) sütuna düşsün — aksi halde ÷ bir sütun sola kayar (kullanıcı bulgusu).
+test('sözleşme: C tuşu 3 sütun kaplar (key-span3), ÷ diğer operatörlerle aynı sütunda hizalanır', () => {
+  const clearMatch = html.match(/<button[^>]*id="clear"[^>]*class="([^"]*)"/);
+  assert.ok(clearMatch, 'clear butonu bulunamadı');
+  assert.ok(clearMatch[1].includes('key-span3'), 'clear butonu key-span3 olmalı (3 sütun)');
+  assert.ok(!clearMatch[1].includes('key-span2'), 'clear butonu artık key-span2 olmamalı');
+});
+
 // --- (b) Minimal DOM stub — smoke test (F4) ---
 
 class FakeClassList {
