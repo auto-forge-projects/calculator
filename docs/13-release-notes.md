@@ -1,7 +1,12 @@
-# calculator v0.1.0 — Release Notes
+# calculator v0.1.1 — Release Notes
 
-- Tarih: 2026-07-25 | SemVer: **v0.1.0** (0.x = API garanti yok) | Mod: AUTOPILOT
+- Tarih: 2026-07-25 | SemVer: **v0.1.1** (0.x = API garanti yok) | Mod: AUTOPILOT
 > Sürüm numarası Faz 8 planındaki M1+M2 milestone'larıyla tutarlı: her ikisi de tamamlandı (FR-1..FR-6 eksiksiz).
+
+## v0.1.1 — Değişiklikler (↺ REQ-001, cycle 2)
+- **Düzeltme:** Operatör butonları (`+ − × ÷`) rakamların soluna değil sağına hizalanıyordu — `C` tuşu artık `key-span3` (3 sütun), `÷` 4. sütunda diğer operatörlerle aynı hizada (bkz. `DL-09-003`, `PR-2.md`).
+- Regresyon testi eklendi (`tests/contract.test.js` T7); bağımsız blind re-review kapıdan geçti (Blocker/Critical=0).
+- Patch sürüm (davranış değişmeyen görsel/hizalama düzeltmesi).
 
 ## Öne çıkanlar
 - İstemci-taraflı, sıfır bağımlılık dört işlem hesap makinesi (statik `index.html`+`app.js`+`style.css`).
@@ -28,9 +33,9 @@ npx serve src/     # veya Docker: docker build -t calculator . && docker run -p 
 ```
 
 ## Rollback planı (kalite kapısı)
-1. **Kod:** Önceki release tag'i yok (ilk sürüm); sorun çıkarsa `git revert <phase-9-commit-range>` ile Faz 9 değişiklikleri geri alınır, statik dosya olduğundan anlık etkilidir.
+1. **Kod:** v0.1.0 tag'ine dönülebilir (`git revert` REQ-001 commit'leri `12a370f`/`06f6b0c`, ya da doğrudan v0.1.0 image tag'i); statik dosya olduğundan anlık etkilidir.
 2. **Veri uyumluluğu:** Durumsuz (kalıcı depolama yok) — downgrade veri kaybı yaratmaz, kullanıcı state'i tarayıcı belleğinde geçicidir.
-3. **Doğrulama:** Rollback sonrası `npm test` (38/38 yeşil beklenir) + `/health` endpoint (nginx statik servis) 200 dönmeli.
+3. **Doğrulama:** Rollback sonrası `npm test` (39/39 yeşil beklenir, v0.1.0'a dönülürse 38/38) + `/health` endpoint (nginx statik servis) 200 dönmeli.
 4. **Dağıtım:** Docker imajı `ghcr.io/auto-forge-projects/calculator:<önceki-sha>` tag'ine geri alınır (`deploy-image.yml` immutable SHA tag üretir); SSH-push deploy script'i (`deploy/remote-deploy.sh`) önceki tag ile yeniden çalıştırılır.
 
 ## Kalite kapısı raporu

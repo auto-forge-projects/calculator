@@ -1,6 +1,6 @@
 {
   "name": "calculator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "İstemci-taraflı, sıfır bağımlılık dört işlem hesap makinesi (eval/Function yasak — bkz. docs/05-architecture.md, docs/07-security.md)",
   "type": "module",
