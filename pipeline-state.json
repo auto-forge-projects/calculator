@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "revision": 91,
+  "revision": 94,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
-  "current_phase": 15,
+  "current_phase": 16,
   "status": "running",
   "active_agents": [],
   "phases": {
@@ -254,6 +254,20 @@
       ],
       "note": "Monitoring (orchestrator inline, devops-engineer rolü): health probe + hata görünürlüğü (tip=web). Kapı geçti (structural)."
     },
+    "15": {
+      "mode": "AUTOPILOT",
+      "status": "done",
+      "started_at": "2026-07-25T09:17:00.000Z",
+      "completed_at": "2026-07-25T09:20:00.000Z",
+      "gate_passed": true,
+      "artifacts": [
+        "docs/15-maintenance.md"
+      ],
+      "decisions": [
+        "DL-15-001"
+      ],
+      "note": "Bakım (orchestrator inline): PR-1.md açık bulguları (F6-F9, N1-N4) TD-1..TD-5 önceliklendirildi. Kapı geçti (structural)."
+    },
     "1-2": {
       "mode": "AUTOPILOT",
       "status": "done",
@@ -457,10 +471,18 @@
         "model_recommended": "sonnet",
         "gate_passed": true,
         "at": "2026-07-25T09:16:00.000Z"
+      },
+      {
+        "phase": "15",
+        "duration_s": 180,
+        "model": null,
+        "model_recommended": "haiku",
+        "gate_passed": true,
+        "at": "2026-07-25T09:20:00.000Z"
       }
     ]
   },
-  "updated_at": "2026-07-25T09:07:15.346Z",
+  "updated_at": "2026-07-25T09:08:18.872Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
