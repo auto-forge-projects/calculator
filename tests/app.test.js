@@ -86,6 +86,25 @@ test('formatResult: kayan nokta gürültüsü kırpılır (0.1+0.2)', () => {
   assert.equal(formatResult(r.value), '0.3');
 });
 
+test('formatResult: çok büyük sonlu değer "Infinity" olarak gösterilmez (F1 düzeltmesi)', () => {
+  assert.notEqual(formatResult(1e299), 'Infinity');
+  assert.equal(Number.isFinite(Number(formatResult(1e299).replace(',', '.'))), true);
+});
+
+test('formatResult: çok küçük sonlu değer sıfıra yuvarlanmaz (F5 düzeltmesi)', () => {
+  assert.notEqual(formatResult(1e-11), '0');
+});
+
+test('calculate: taşan (Infinity) sonuç → çökmeden geçersiz girdi hatası (F2 düzeltmesi)', () => {
+  assert.deepEqual(calculate(1e308, '×', 10), { error: 'geçersiz girdi' });
+});
+
+test('durum makinesi: taşan işlem sonrası isError=true kalır (F2 düzeltmesi)', () => {
+  const state = { display: '10', previous: 1e308, operator: '×', awaitingNext: false, hasEntered: true, isError: false };
+  const result = reduceEquals(state);
+  assert.equal(result.isError, true);
+});
+
 // --- Durum makinesi (docs/06-uiux.md akışlarının birebir karşılığı) ---
 
 function press(state, keys) {

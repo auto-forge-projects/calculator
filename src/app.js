@@ -24,11 +24,17 @@ export function calculate(a, op, b) {
   const fn = Object.prototype.hasOwnProperty.call(OPERATORS, op) ? OPERATORS[op] : null;
   if (typeof fn !== 'function') return { error: 'geçersiz girdi' };
   if (op === '÷' && b === 0) return { error: 'sıfıra bölünemez' };
-  return { value: fn(a, b) };
+  const result = fn(a, b);
+  if (!Number.isFinite(result)) return { error: 'geçersiz girdi' };
+  return { value: result };
 }
 
 export function formatResult(value) {
   if (!Number.isFinite(value)) return 'Hata: geçersiz girdi';
+  // Kayan nokta gürültü kırpma (1e10 çarpım/bölüm) yalnız normal büyüklükte anlamlıdır;
+  // çok büyük değerlerde taşmaya (Infinity), çok küçük değerlerde sıfıra yuvarlar (F1/F5).
+  if (value !== 0 && Math.abs(value) < 1e-9) return String(value);
+  if (Math.abs(value) >= 1e15) return String(value);
   const rounded = Math.round(value * 1e10) / 1e10;
   return String(rounded);
 }
