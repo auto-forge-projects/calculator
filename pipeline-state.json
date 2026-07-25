@@ -1,21 +1,12 @@
 {
   "schema_version": 2,
-  "revision": 110,
+  "revision": 115,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
-  "current_phase": "10",
-  "status": "running",
-  "active_agents": [
-    {
-      "agent": "code-reviewer",
-      "model": "opus",
-      "phase": "10",
-      "task": "REQ-001 diff blind re-review",
-      "started_at": "2026-07-25T19:06:00.000Z",
-      "last_update": "2026-07-25T19:03:00.968Z"
-    }
-  ],
+  "current_phase": "16",
+  "status": "completed",
+  "active_agents": [],
   "phases": {
     "0": {
       "mode": "AUTOPILOT",
@@ -160,7 +151,7 @@
     },
     "10": {
       "mode": "AUTOPILOT",
-      "status": "running",
+      "status": "done",
       "started_at": "2026-07-25T19:06:00.000Z",
       "tasks": [
         {
@@ -185,7 +176,12 @@
         }
       ],
       "gate_passed": true,
-      "completed_at": "2026-07-25T00:00:00Z"
+      "completed_at": "2026-07-25T19:10:00.000Z",
+      "decisions": [
+        "DL-10-001",
+        "DL-10-002"
+      ],
+      "note": "REQ-001 delta blind re-review (PR-2.md): Blocker/Critical=0. Major/Minor/Nit ertelendi (DL-10-002)."
     },
     "11": {
       "mode": "AUTOPILOT",
@@ -245,16 +241,17 @@
     "13": {
       "mode": "AUTOPILOT",
       "status": "done",
-      "started_at": "2026-07-25T09:10:00.000Z",
-      "completed_at": "2026-07-25T09:12:00.000Z",
+      "started_at": "2026-07-25T19:03:14.289Z",
+      "completed_at": "2026-07-25T19:20:00.000Z",
       "gate_passed": true,
       "artifacts": [
         "docs/13-release-notes.md"
       ],
       "decisions": [
-        "DL-13-001"
+        "DL-13-001",
+        "DL-13-002"
       ],
-      "note": "Release (orchestrator inline, devops-engineer rolü): v0.1.0, rollback planı (kod-revert + SHA imaj tag). Kapı geçti (structural+mechanical join)."
+      "note": "REQ-001 delta: v0.1.1 patch sürüm, rollback v0.1.0 tag referansı. Kapı geçti (structural+JOIN)."
     },
     "14": {
       "mode": "AUTOPILOT",
@@ -324,9 +321,15 @@
   "pending_human_review": [],
   "history": [
     {
-      "at": "2026-07-25T18:49:46.000Z",
-      "event": "cycle_opened",
-      "detail": "REQ-001: operatör butonları hizalama düzeltmesi — Faz 9 yeniden açıldı"
+      "at": "2026-07-25T19:20:00.000Z",
+      "event": "cycle_closed",
+      "phase": "13",
+      "detail": "REQ-001 v0.1.1 olarak yayınlandı"
+    },
+    {
+      "at": "2026-07-25T19:20:00.000Z",
+      "event": "recovered",
+      "detail": "/pipeline-resume: STALE_UNFLAGGED (Faz 9) catch-up + REQ-001 delta (10/11/13) revalidasyonu ile cycle 2 kapatıldı"
     }
   ],
   "budget": {
@@ -453,10 +456,26 @@
         "model_recommended": "sonnet",
         "gate_passed": true,
         "at": "2026-07-25T19:05:00.000Z"
+      },
+      {
+        "phase": "10",
+        "duration_s": 240,
+        "model": null,
+        "model_recommended": "opus",
+        "gate_passed": true,
+        "at": "2026-07-25T19:10:00.000Z"
+      },
+      {
+        "phase": "13",
+        "duration_s": 1006,
+        "model": null,
+        "model_recommended": "haiku",
+        "gate_passed": true,
+        "at": "2026-07-25T19:20:00.000Z"
       }
     ]
   },
-  "updated_at": "2026-07-25T19:03:07.149Z",
+  "updated_at": "2026-07-25T19:04:26.849Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
@@ -533,11 +552,12 @@
       "id": "REQ-001",
       "text": "+ - * ve / butonları rakamların solunda kalmış. bu butonları en sağa alalım.",
       "at": "2026-07-25T18:49:46.000Z",
-      "status": "in_delta",
+      "status": "shipped",
       "phases": [
         "9"
       ],
       "cycle": 2,
+      "shipped_in": "v0.1.1",
       "notify_email": "semakucukpehlivan@gmail.com"
     }
   ]
