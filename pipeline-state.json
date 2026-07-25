@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "revision": 88,
+  "revision": 91,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
-  "current_phase": 14,
+  "current_phase": 15,
   "status": "running",
   "active_agents": [],
   "phases": {
@@ -240,6 +240,20 @@
       ],
       "note": "Release (orchestrator inline, devops-engineer rolü): v0.1.0, rollback planı (kod-revert + SHA imaj tag). Kapı geçti (structural+mechanical join)."
     },
+    "14": {
+      "mode": "AUTOPILOT",
+      "status": "done",
+      "started_at": "2026-07-25T09:13:00.000Z",
+      "completed_at": "2026-07-25T09:16:00.000Z",
+      "gate_passed": true,
+      "artifacts": [
+        "docs/14-monitoring.md"
+      ],
+      "decisions": [
+        "DL-14-001"
+      ],
+      "note": "Monitoring (orchestrator inline, devops-engineer rolü): health probe + hata görünürlüğü (tip=web). Kapı geçti (structural)."
+    },
     "1-2": {
       "mode": "AUTOPILOT",
       "status": "done",
@@ -435,10 +449,18 @@
         "model_recommended": "haiku",
         "gate_passed": true,
         "at": "2026-07-25T09:12:00.000Z"
+      },
+      {
+        "phase": "14",
+        "duration_s": 180,
+        "model": null,
+        "model_recommended": "sonnet",
+        "gate_passed": true,
+        "at": "2026-07-25T09:16:00.000Z"
       }
     ]
   },
-  "updated_at": "2026-07-25T09:06:14.515Z",
+  "updated_at": "2026-07-25T09:07:15.346Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
