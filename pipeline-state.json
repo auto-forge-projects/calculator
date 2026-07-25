@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "revision": 102,
+  "revision": 106,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
@@ -110,31 +110,36 @@
     },
     "9": {
       "mode": "AUTOPILOT",
-      "status": "running",
+      "status": "done",
       "started_at": "2026-07-25T18:49:52.280Z",
       "tasks": [
         {
-          "title": "TASK-F12: formatResult+calculate için red testleri (F1/F2/F5)",
+          "title": "regresyon testi yaz: C 3 sütun + ÷ 4. sütunda hizalı (red)",
           "status": "done"
         },
         {
-          "title": "TASK-F12: app.js düzeltmesi (green)",
+          "title": "index.html/style.css düzelt: key-span3 + ÷ hizası (green)",
           "status": "done"
         },
         {
-          "title": "TASK-F12: npm test yeşil doğrulama",
+          "title": "npm test yeşil",
           "status": "done"
         },
         {
-          "title": "DL-09-002 yaz + commit",
+          "title": "DL yaz",
+          "status": "done"
+        },
+        {
+          "title": "commit + push",
           "status": "done"
         }
       ],
       "gate_passed": true,
-      "completed_at": "2026-07-25T02:00:00.000Z",
+      "completed_at": "2026-07-25T19:05:00.000Z",
       "decisions": [
         "DL-09-001",
-        "DL-09-002"
+        "DL-09-002",
+        "DL-09-003"
       ],
       "artifacts": [
         "src/app.js",
@@ -142,7 +147,7 @@
         "src/style.css",
         "tests/app.test.js"
       ],
-      "note": "Development (orchestrator inline, developer rolü, TDD): saf fonksiyon+reducer durum makinesi+ince DOM adaptörü. npm test 27/27 yeşil. Kapı geçti (mechanical, all). [resume ile kapatıldı — impl commit kesintiden sonra tamamlandı]"
+      "note": "Development (orchestrator inline, developer rolü, TDD): saf fonksiyon+reducer durum makinesi+ince DOM adaptörü. npm test yeşil. Kapı geçti (mechanical, all). REQ-001 delta düzeltmesi test→fix commit çiftiyle kapatıldı. [resume ile kapatıldı — kesintiden sonra commit+push tamamlandı]"
     },
     "10": {
       "mode": "AUTOPILOT",
@@ -429,10 +434,18 @@
         "model_recommended": "sonnet",
         "gate_passed": true,
         "at": "2026-07-25T09:26:00.000Z"
+      },
+      {
+        "phase": "9",
+        "duration_s": 908,
+        "model": null,
+        "model_recommended": "sonnet",
+        "gate_passed": true,
+        "at": "2026-07-25T19:05:00.000Z"
       }
     ]
   },
-  "updated_at": "2026-07-25T18:49:52.280Z",
+  "updated_at": "2026-07-25T18:57:23.349Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
