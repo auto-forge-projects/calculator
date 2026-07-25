@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "revision": 86,
+  "revision": 88,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
-  "current_phase": 13,
+  "current_phase": 14,
   "status": "running",
   "active_agents": [],
   "phases": {
@@ -226,6 +226,20 @@
       ],
       "note": "CI/CD (orchestrator inline, devops-engineer rolu): mevcut ci.yml/deploy-image.yml korundu, nginx:alpine statik-dosya Dockerfile + /health config eklendi (DL-04-001 sifir-bagimlilik mimarisiyle uyumlu). Kapi gecti (structural+mechanical)."
     },
+    "13": {
+      "mode": "AUTOPILOT",
+      "status": "done",
+      "started_at": "2026-07-25T09:10:00.000Z",
+      "completed_at": "2026-07-25T09:12:00.000Z",
+      "gate_passed": true,
+      "artifacts": [
+        "docs/13-release-notes.md"
+      ],
+      "decisions": [
+        "DL-13-001"
+      ],
+      "note": "Release (orchestrator inline, devops-engineer rolü): v0.1.0, rollback planı (kod-revert + SHA imaj tag). Kapı geçti (structural+mechanical join)."
+    },
     "1-2": {
       "mode": "AUTOPILOT",
       "status": "done",
@@ -413,10 +427,18 @@
         "model_recommended": "sonnet",
         "gate_passed": true,
         "at": "2026-07-25T09:05:00.000Z"
+      },
+      {
+        "phase": "13",
+        "duration_s": 120,
+        "model": null,
+        "model_recommended": "haiku",
+        "gate_passed": true,
+        "at": "2026-07-25T09:12:00.000Z"
       }
     ]
   },
-  "updated_at": "2026-07-25T09:04:06.394Z",
+  "updated_at": "2026-07-25T09:06:14.515Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
