@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "revision": 84,
+  "revision": 86,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
@@ -59,11 +59,12 @@
         "docs/05-architecture.md"
       ],
       "decisions": [
-        "DL-05-001"
+        "DL-05-001",
+        "DL-05-002"
       ],
-      "note": "Mimari Tasarım (architect devri, opus): statik sıfır-bağımlılık mimari, Mermaid diyagram, NFR eşleme. Kapı geçti (structural).",
+      "note": "Mimari Tasarım (architect devri, opus): statik sıfır-bağımlılık mimari, Mermaid diyagram, NFR eşleme. Kapı geçti (structural). [Faz 10 F3 geri beslemesi: DL-05-002 ile reducer durum makinesi dokümana işlendi, döngü kapandı]",
       "gate_passed": true,
-      "completed_at": "2026-07-24T00:44:18.000Z"
+      "completed_at": "2026-07-25T01:35:00.000Z"
     },
     "6": {
       "mode": "AUTOPILOT",
@@ -415,7 +416,7 @@
       }
     ]
   },
-  "updated_at": "2026-07-25T08:58:55.147Z",
+  "updated_at": "2026-07-25T09:04:06.394Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
