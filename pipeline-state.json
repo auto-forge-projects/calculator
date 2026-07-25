@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "revision": 81,
+  "revision": 84,
   "project": "calculator",
   "workspace": "workspace/calculator",
   "profile": "LITE",
-  "current_phase": 11,
+  "current_phase": 13,
   "status": "running",
   "active_agents": [],
   "phases": {
@@ -186,6 +186,45 @@
         "DL-11-001"
       ]
     },
+    "12": {
+      "mode": "AUTOPILOT",
+      "status": "done",
+      "started_at": "2026-07-25T09:00:00.000Z",
+      "tasks": [
+        {
+          "title": "workflow dosyaları var mı kontrol et (ci.yml, deploy-image.yml)",
+          "status": "done"
+        },
+        {
+          "title": "ci.yml içeriğini doğrula/tamamla (npm test)",
+          "status": "done"
+        },
+        {
+          "title": "Dockerfile varlığı/kalitesi kontrol",
+          "status": "done"
+        },
+        {
+          "title": "DL-12-001 yaz",
+          "status": "done"
+        },
+        {
+          "title": "kapı doğrula + commit + push",
+          "status": "done"
+        }
+      ],
+      "gate_passed": true,
+      "completed_at": "2026-07-25T09:05:00.000Z",
+      "artifacts": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/deploy-image.yml",
+        "Dockerfile",
+        "deploy/nginx.conf"
+      ],
+      "decisions": [
+        "DL-12-001"
+      ],
+      "note": "CI/CD (orchestrator inline, devops-engineer rolu): mevcut ci.yml/deploy-image.yml korundu, nginx:alpine statik-dosya Dockerfile + /health config eklendi (DL-04-001 sifir-bagimlilik mimarisiyle uyumlu). Kapi gecti (structural+mechanical)."
+    },
     "1-2": {
       "mode": "AUTOPILOT",
       "status": "done",
@@ -365,10 +404,18 @@
         "model_recommended": "sonnet",
         "gate_passed": true,
         "at": "2026-07-25T07:20:00.000Z"
+      },
+      {
+        "phase": "12",
+        "duration_s": 300,
+        "model": null,
+        "model_recommended": "sonnet",
+        "gate_passed": true,
+        "at": "2026-07-25T09:05:00.000Z"
       }
     ]
   },
-  "updated_at": "2026-07-25T08:52:58.276Z",
+  "updated_at": "2026-07-25T08:58:55.147Z",
   "default_mode": "AUTOPILOT",
   "checkpoints": [
     {
@@ -403,6 +450,25 @@
     }
   ],
   "product": {
-    "type": "web"
+    "type": "web",
+    "name": "calculator",
+    "version": "0.1.0",
+    "docker_image": "ghcr.io/auto-forge-projects/calculator",
+    "auto_run": false,
+    "commands": {
+      "build": "docker build -t calculator .",
+      "test": "npm test",
+      "run": "docker run -p 3000:3000 calculator"
+    },
+    "links": [
+      {
+        "label": "README",
+        "path": "README.md"
+      },
+      {
+        "label": "Mimari",
+        "path": "docs/05-architecture.md"
+      }
+    ]
   }
 }

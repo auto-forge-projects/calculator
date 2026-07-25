@@ -1,0 +1,8 @@
+node_modules
+tests
+docs
+decisions
+.git
+.github
+.githooks
+pipeline-state.json
